@@ -1,0 +1,35 @@
+@model List<IntimateHomeCookedFood.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Sepet";
+}
+
+<h2>Sepet</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Yemek Adı</th>
+                <th>Anne Adı</th>
+                <th>Fiyat</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Meal.Name</td>
+                <td>@item.Mother.Name</td>
+                <td>@item.Meal.Price TL</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Sepetiniz boş.</p>
+}

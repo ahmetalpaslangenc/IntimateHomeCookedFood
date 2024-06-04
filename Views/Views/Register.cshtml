@@ -1,0 +1,9 @@
+@model IntimateHomeCookedFood.Models.User
+
+<form asp-action="Register">
+    <input asp-for="FirstName" placeholder="First Name"/>
+    <input asp-for="LastName" placeholder="Last Name"/>
+    <input asp-for="Email" type="email" placeholder="Email"/>
+    <input asp-for="Password" type="password" placeholder="Password"/>
+    <button type="submit">Register</button>
+</form>

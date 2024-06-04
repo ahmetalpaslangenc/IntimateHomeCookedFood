@@ -1,0 +1,36 @@
+@model IEnumerable<IntimateHomeCookedFood.Models.Mother>
+
+@{
+    ViewData["Title"] = "Annelerimiz";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Meals</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mother in Model)
+        {
+            <tr>
+                <td>@mother.Name</td>
+                <td>@mother.Rating</td>
+                <td>
+                    @foreach (var meal in mother.Meals)
+                    {
+                        <span>@meal.Name</span>
+                    }
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Mothers", new { id = mother.Id })">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+@model IntimateHomeCookedFood.Models.MealDetailsViewModel
+
+@{
+    ViewData["Title"] = Model.Meal.Name;
+}
+
+<h2>@Model.Meal.Name</h2>
+<p>@Model.Meal.Description</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Anne Adı</th>
+            <th>Değerlendirme</th>
+            <th>Fiyat</th>
+            <th>Stok Durumu</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mother in Model.Mothers)
+        {
+            <tr>
+                <td>@mother.Name</td>
+                <td>@mother.Rating yıldız</td>
+                <td>@Model.Meal.Price TL</td>
+                <td>Var</td>
+                <td>
+                    <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                        <input type="hidden" name="mealId" value="@Model.Meal.Id" />
+                        <button type="submit" class="btn btn-primary">Sepete Ekle</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

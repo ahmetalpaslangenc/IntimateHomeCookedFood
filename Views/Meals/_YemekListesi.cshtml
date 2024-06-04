@@ -1,0 +1,8 @@
+@model List<string>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li><a href="@Url.Action("MealDetails", "Meals", new { mealName = item })">@item</a></li>
+    }
+</ul>

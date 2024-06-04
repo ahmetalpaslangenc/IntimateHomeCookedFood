@@ -1,0 +1,46 @@
+@model List<IntimateHomeCookedFood.Models.Mother>
+@{
+    var meal = ViewBag.Meal as IntimateHomeCookedFood.Models.Meal;
+    ViewData["Title"] = meal?.Name;
+}
+
+<h2>@meal?.Name</h2>
+<p>@meal?.Description</p>
+<h3>Anneler</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Anne Adı</th>
+            <th>Fiyat</th>
+            <th>Değerlendirme</th>
+            <th>Stok</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var mother in Model)
+    {
+        var stock = new Random().Next(0, 2) == 1;
+        <tr>
+            <td>@mother.Name</td>
+            <td>@meal?.Price TL</td>
+            <td>@mother.Rating yıldız</td>
+            <td>@(stock ? "Var" : "Yok")</td>
+            <td>
+                @if (stock)
+                {
+                    <form asp-controller="Meals" asp-action="AddToCart" method="post">
+                        <input type="hidden" name="mealId" value="@meal?.Id" />
+                        <input type="hidden" name="motherId" value="@mother.Id" />
+                        <button type="submit" class="btn btn-primary">Sepete Ekle</button>
+                    </form>
+                }
+                else
+                {
+                    <button class="btn btn-secondary" disabled>Stok Yok</button>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
