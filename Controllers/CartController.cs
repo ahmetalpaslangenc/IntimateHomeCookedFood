@@ -26,7 +26,7 @@ namespace IntimateHomeCookedFood.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToCart(int mealId)
+        public IActionResult AddToCart(int mealId, string returnUrl)
         {
             var meal = _context.Meals.FirstOrDefault(m => m.Id == mealId);
             var mother = MothersController.Mothers.FirstOrDefault(m => m.Meals.Any(meal => meal.Id == mealId));
@@ -40,11 +40,13 @@ namespace IntimateHomeCookedFood.Controllers
                 _httpContextAccessor.HttpContext.Session.SetObjectAsJson("cart", cart);
 
                 var cartCount = _httpContextAccessor.HttpContext.Session.GetInt32("cartCount") ?? 0;
-                _httpContextAccessor.HttpContext.Session.SetInt32("cartCount", cartCount + 1);
+                _httpContextAccessor.HttpContext.Session.SetInt32("cartCount", cart.Count);
 
                 TempData["Message"] = "Ürün sepete eklendi.";
             }
-            return RedirectToAction("Index");
+
+            returnUrl = string.IsNullOrEmpty(returnUrl) ? Url.Action("Index", "Meals") : returnUrl;
+            return Redirect(returnUrl);
         }
     }
 }

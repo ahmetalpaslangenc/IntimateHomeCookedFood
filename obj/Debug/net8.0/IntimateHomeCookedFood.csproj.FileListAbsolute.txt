@@ -284,3 +284,4 @@
 /Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/obj/Debug/net8.0/IntimateHomeCookedFood.pdb
 /Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/obj/Debug/net8.0/IntimateHomeCookedFood.genruntimeconfig.cache
 /Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/obj/Debug/net8.0/ref/IntimateHomeCookedFood.dll
+/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/obj/Debug/net8.0/IntimateHomeCookedFood.sourcelink.json

@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using IntimateHomeCookedFood.Models;
 using IntimateHomeCookedFood.Data;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using IntimateHomeCookedFood.Extensions;
 
 namespace IntimateHomeCookedFood.Controllers
 {
@@ -72,6 +75,28 @@ namespace IntimateHomeCookedFood.Controllers
             };
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult AddToCart(int mealId)
+        {
+            var meal = _context.Meals.FirstOrDefault(m => m.Id == mealId);
+            var mother = MothersController.Mothers.FirstOrDefault(m => m.Meals.Any(meal => meal.Id == mealId));
+
+            if (meal != null && mother != null)
+            {
+                var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart") ?? new List<CartItem>();
+                var cartItem = new CartItem { Meal = meal, Mother = mother };
+                cart.Add(cartItem);
+
+                HttpContext.Session.SetObjectAsJson("cart", cart);
+
+                var cartCount = HttpContext.Session.GetInt32("cartCount") ?? 0;
+                HttpContext.Session.SetInt32("cartCount", cartCount + 1);
+
+                TempData["Message"] = "Ürün sepete eklendi.";
+            }
+            return RedirectToAction("Index", "Cart");
         }
     }
 }

@@ -1,33 +1,16 @@
 @model IntimateHomeCookedFood.Models.Mother
+
 @{
-    ViewData["Title"] = Model.Name;
-    var mealId = ViewBag.MealId;
+    ViewData["Title"] = "Anne Detayları";
 }
 
 <h2>@Model.Name</h2>
-<p>Değerlendirme: @Model.Rating yıldız</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Yemek Adı</th>
-            <th>Fiyat</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var meal in Model.Meals.Where(m => m.Id == mealId))
+<p>Rating: @Model.Rating</p>
+<h3>Favori Yemeği</h3>
+<ul>
+    @foreach (var meal in Model.Meals)
     {
-        <tr>
-            <td>@meal.Name</td>
-            <td>@meal.Price TL</td>
-            <td>
-                <form asp-action="AddToCart" asp-controller="Cart" method="post">
-                    <input type="hidden" name="mealId" value="@meal.Id" />
-                    <button type="submit" class="btn btn-sm btn-outline-secondary">Sepete Ekle</button>
-                </form>
-            </td>
-        </tr>
+        <li>@meal.Name</li>
     }
-    </tbody>
-</table>
+</ul>
+<a href="@Url.Action("Index", "Mothers")" class="btn btn-primary">Geri Dön</a>

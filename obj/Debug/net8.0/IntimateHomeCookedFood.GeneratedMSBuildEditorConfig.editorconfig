@@ -34,12 +34,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FydC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/Views/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29udGFjdC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/Views/Home/Index.cshtml]
@@ -112,6 +120,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/Views/Shared/_ValidationScriptsPartial.cshtml]

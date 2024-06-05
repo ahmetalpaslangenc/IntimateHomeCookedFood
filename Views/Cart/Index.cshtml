@@ -14,7 +14,8 @@
                 <th>Yemek Adı</th>
                 <th>Anne Adı</th>
                 <th>Fiyat</th>
-                <th></th>
+                <th>Adet</th> <!-- Adet sütunu eklendi -->
+                <th>Toplam Fiyat</th> <!-- Toplam Fiyat sütunu eklendi -->
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,8 @@
                 <td>@item.Meal.Name</td>
                 <td>@item.Mother.Name</td>
                 <td>@item.Meal.Price TL</td>
+                <td>@item.Quantity</td> <!-- Adet bilgisi gösterildi -->
+                <td>@(item.Meal.Price * item.Quantity) TL</td> <!-- Toplam Fiyat hesaplandı -->
             </tr>
         }
         </tbody>

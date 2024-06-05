@@ -2,13 +2,54 @@
     ViewData["Title"] = "Yemekler";
 }
 
-<div>
-    <h1>Yemekler</h1>
-    <div>
-        <a asp-controller="Meals" asp-action="Corbalar" class="custom-button">Çorbalar</a>
-        <a asp-controller="Meals" asp-action="AnaYemekler" class="custom-button">Ana Yemekler</a>
-        <a asp-controller="Meals" asp-action="Salatalar" class="custom-button">Salatalar</a>
-        <a asp-controller="Meals" asp-action="Tatlilar" class="custom-button">Tatlılar</a>
-        <a asp-controller="Meals" asp-action="Icecekler" class="custom-button">İçecekler</a>
+<h2>@ViewData["Title"]</h2>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Çorbalar</h5>
+                    <p class="card-text">Lezzetli ve sağlıklı çorbalar.</p>
+                    <a href="@Url.Action("Soups", "Meals")" class="btn btn-primary">Çorbaları Gör</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Ana Yemekler</h5>
+                    <p class="card-text">Lezzetli ve doyurucu ana yemekler.</p>
+                    <a href="@Url.Action("MainDishes", "Meals")" class="btn btn-primary">Ana Yemekleri Gör</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Salatalar</h5>
+                    <p class="card-text">Ferahlatıcı ve sağlıklı salatalar.</p>
+                    <a href="@Url.Action("Salads", "Meals")" class="btn btn-primary">Salataları Gör</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Tatlılar</h5>
+                    <p class="card-text">Tatlı ve lezzetli tatlılar.</p>
+                    <a href="@Url.Action("Desserts", "Meals")" class="btn btn-primary">Tatlıları Gör</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">İçecekler</h5>
+                    <p class="card-text">Serinletici ve lezzetli içecekler.</p>
+                    <a href="@Url.Action("Drinks", "Meals")" class="btn btn-primary">İçecekleri Gör</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

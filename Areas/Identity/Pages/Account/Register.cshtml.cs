@@ -59,4 +59,3 @@ namespace IntimateHomeCookedFood.Areas.Identity.Pages.Account
         }
     }
 }
-

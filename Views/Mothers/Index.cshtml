@@ -4,33 +4,20 @@
     ViewData["Title"] = "Annelerimiz";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2>Annelerimiz</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Rating</th>
-            <th>Meals</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var mother in Model)
-        {
-            <tr>
-                <td>@mother.Name</td>
-                <td>@mother.Rating</td>
-                <td>
-                    @foreach (var meal in mother.Meals)
-                    {
-                        <span>@meal.Name</span>
-                    }
-                </td>
-                <td>
-                    <a href="@Url.Action("Details", "Mothers", new { id = mother.Id })">Details</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    @foreach (var mother in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <h4 class="card-title">@mother.Name</h4>
+                    <p class="card-text">Rating: @mother.Rating</p>
+                    <a href="@Url.Action("Details", "Mothers", new { id = mother.Id })" class="btn btn-sm btn-outline-secondary">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
