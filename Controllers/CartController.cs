@@ -1,52 +1,111 @@
 using Microsoft.AspNetCore.Mvc;
 using IntimateHomeCookedFood.Models;
 using IntimateHomeCookedFood.Extensions;
-using IntimateHomeCookedFood.Data;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
 using System.Linq;
 
 namespace IntimateHomeCookedFood.Controllers
 {
     public class CartController : Controller
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly ApplicationDbContext _context;
-
-        public CartController(IHttpContextAccessor httpContextAccessor, ApplicationDbContext context)
-        {
-            _httpContextAccessor = httpContextAccessor;
-            _context = context;
-        }
-
         public IActionResult Index()
         {
-            var cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart") ?? new List<CartItem>();
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart") ?? new List<CartItem>();
             return View(cart);
         }
 
         [HttpPost]
-        public IActionResult AddToCart(int mealId, string returnUrl)
+        public IActionResult UpdateQuantity(string mealId, string action)
         {
-            var meal = _context.Meals.FirstOrDefault(m => m.Id == mealId);
-            var mother = MothersController.Mothers.FirstOrDefault(m => m.Meals.Any(meal => meal.Id == mealId));
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart") ?? new List<CartItem>();
+            var item = cart.FirstOrDefault(c => c.Meal.Id == mealId);
 
-            if (meal != null && mother != null)
+            if (item != null)
             {
-                var cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart") ?? new List<CartItem>();
-                var cartItem = new CartItem { Meal = meal, Mother = mother };
-                cart.Add(cartItem);
-
-                _httpContextAccessor.HttpContext.Session.SetObjectAsJson("cart", cart);
-
-                var cartCount = _httpContextAccessor.HttpContext.Session.GetInt32("cartCount") ?? 0;
-                _httpContextAccessor.HttpContext.Session.SetInt32("cartCount", cart.Count);
-
-                TempData["Message"] = "Ürün sepete eklendi.";
+                if (action == "increase")
+                {
+                    item.Quantity++;
+                }
+                else if (action == "decrease")
+                {
+                    item.Quantity--;
+                    if (item.Quantity <= 0)
+                    {
+                        cart.Remove(item);
+                    }
+                }
             }
 
-            returnUrl = string.IsNullOrEmpty(returnUrl) ? Url.Action("Index", "Meals") : returnUrl;
-            return Redirect(returnUrl);
+            HttpContext.Session.SetObjectAsJson("cart", cart);
+            HttpContext.Session.SetInt32("cartCount", cart.Sum(x => x.Quantity));
+
+            return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult AddMenuToCart(List<string> items)
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart") ?? new List<CartItem>();
+
+            foreach (var item in items)
+            {
+                var parts = item.Split('|');
+                if (parts.Length < 3) continue;
+
+                string id = parts[0];
+                string name = parts[1];
+                if (!decimal.TryParse(parts[2], out decimal price)) continue;
+
+                var existing = cart.FirstOrDefault(x => x.Meal.Id == id);
+                if (existing != null)
+                {
+                    existing.Quantity++;
+                }
+                else
+                {
+                    cart.Add(new CartItem
+                    {
+                        Meal = new Meal
+                        {
+                            Id = id,
+                            Name = name,
+                            Price = price
+                        },
+                        Quantity = 1
+                    });
+                }
+            }
+
+            HttpContext.Session.SetObjectAsJson("cart", cart);
+            HttpContext.Session.SetInt32("cartCount", cart.Sum(x => x.Quantity));
+
+            return RedirectToAction("Index");
+        }
+
+        // ✅ Yeni: Sipariş onay ekranı
+            [HttpGet]
+            public IActionResult OrderConfirmation()
+            {
+                var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart") ?? new List<CartItem>();
+
+                if (cart.Any())
+                {
+                    var order = new Order
+                    {
+                        UserEmail = User.Identity.Name,
+                        Items = cart
+                    };
+
+                    // Geçici siparişi session'a kaydet (İsteğe bağlı: istersen orders listesine de eklersin)
+                    HttpContext.Session.SetObjectAsJson("lastOrder", cart);
+
+                    HttpContext.Session.Remove("cart");
+                    HttpContext.Session.SetInt32("cartCount", 0);
+                }
+
+                var lastOrder = HttpContext.Session.GetObjectFromJson<List<CartItem>>("lastOrder") ?? new List<CartItem>();
+                return View(lastOrder);
+            }
+
     }
 }

@@ -17,6 +17,74 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/arkaplandiger.jpg",
+      "PackagePath": "staticwebassets/images/arkaplandiger.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/arkaplanyemekler.jpg",
+      "PackagePath": "staticwebassets/images/arkaplanyemekler.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/ayran.jpg",
+      "PackagePath": "staticwebassets/images/ayran.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/baklava.jpg",
+      "PackagePath": "staticwebassets/images/baklava.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/cacik.jpg",
+      "PackagePath": "staticwebassets/images/cacik.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/cobansalatasi.jpg",
+      "PackagePath": "staticwebassets/images/cobansalatasi.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/domates.jpg",
+      "PackagePath": "staticwebassets/images/domates.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/ezogelin.jpg",
+      "PackagePath": "staticwebassets/images/ezogelin.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/karniyarik.jpg",
+      "PackagePath": "staticwebassets/images/karniyarik.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/kola.jpg",
+      "PackagePath": "staticwebassets/images/kola.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/mantar.jpg",
+      "PackagePath": "staticwebassets/images/mantar.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/mercimek.jpg",
+      "PackagePath": "staticwebassets/images/mercimek.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/pilav.jpg",
+      "PackagePath": "staticwebassets/images/pilav.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/sutlac.jpg",
+      "PackagePath": "staticwebassets/images/sutlac.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/tarhana.jpg",
+      "PackagePath": "staticwebassets/images/tarhana.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/tavuk.jpg",
+      "PackagePath": "staticwebassets/images/tavuk.jpg"
+    },
+    {
+      "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/images/tavuksote.jpg",
+      "PackagePath": "staticwebassets/images/tavuksote.jpg"
+    },
+    {
       "Id": "/Users/ahmetalpaslangenc/Desktop/32ProjeLast/IntimateHomeCookedFood/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

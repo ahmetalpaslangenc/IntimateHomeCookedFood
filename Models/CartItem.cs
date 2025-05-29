@@ -1,3 +1,5 @@
+using IntimateHomeCookedFood.Models; // Eğer Meal ve Mother bu namespace içindeyse
+
 namespace IntimateHomeCookedFood.Models
 {
     public class CartItem

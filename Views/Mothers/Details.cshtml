@@ -1,16 +1,26 @@
-@model IntimateHomeCookedFood.Models.Mother
+@model IntimateHomeCookedFood.Models.MotherDetailViewModel
 
-@{
-    ViewData["Title"] = "Anne Detayları";
-}
+<div class="diger-sayfa-arkaplan"></div>
+<div class="card p-4">
+    <h2>@Model.Name</h2>
+    <p>Değerlendirme: @Model.Rating</p>
 
-<h2>@Model.Name</h2>
-<p>Rating: @Model.Rating</p>
-<h3>Favori Yemeği</h3>
-<ul>
-    @foreach (var meal in Model.Meals)
-    {
-        <li>@meal.Name</li>
-    }
-</ul>
-<a href="@Url.Action("Index", "Mothers")" class="btn btn-primary">Geri Dön</a>
+    <h4>Günün Menüsü</h4>
+    <ul>
+        @foreach (var item in Model.Menu)
+        {
+            <li>
+                <strong>@item.Category</strong>: @item.Name (@item.Price.ToString("0.00") TL)
+            </li>
+        }
+    </ul>
+
+    <form method="post" asp-action="AddMenuToCart" asp-controller="Cart">
+        @foreach (var item in Model.Menu)
+        {
+            <input type="hidden" name="items" value="@($"{item.Id}|{item.Name}|{item.Price}")" />
+        }
+        <button type="submit" class="btn btn-danger">Sepete Ekle</button>
+        <a href="/Mothers" class="btn btn-outline-secondary">Geri Dön</a>
+    </form>
+</div>

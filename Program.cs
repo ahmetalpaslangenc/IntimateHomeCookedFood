@@ -65,21 +65,21 @@ using (var serviceScope = app.Services.CreateScope())
     if (!context.Meals.Any())
     {
         context.Meals.AddRange(
-            new Meal { Name = "Mercimek Çorbası", Description = "Lezzetli ve sağlıklı mercimek çorbası.", Price = 10.0m, Type = "Çorba", ImageUrl = "/images/mercimek.jpg" },
-            new Meal { Name = "Domates Çorbası", Description = "Taze domateslerden yapılmış çorba.", Price = 12.0m, Type = "Çorba", ImageUrl = "/images/domates.jpg" },
-            new Meal { Name = "Ezogelin Çorbası", Description = "Türk mutfağının geleneksel çorbası.", Price = 11.0m, Type = "Çorba", ImageUrl = "/images/ezogelin.jpg" },
-            new Meal { Name = "Tavuk Çorbası", Description = "Tavuklu ve sebzeli besleyici çorba.", Price = 14.0m, Type = "Çorba", ImageUrl = "/images/tavuk.jpg" },
-            new Meal { Name = "Kremalı Mantar Çorbası", Description = "Kremalı ve mantarlı lezzetli çorba.", Price = 15.0m, Type = "Çorba", ImageUrl = "/images/mantar.jpg" },
-            new Meal { Name = "Tarhana Çorbası", Description = "Anadolu'nun geleneksel tarhana çorbası.", Price = 9.0m, Type = "Çorba", ImageUrl = "/images/tarhana.jpg" },
-            new Meal { Name = "Pilav", Description = "Lezzetli pilav.", Price = 10.0m, Type = "Ana Yemek", ImageUrl = "/images/pilav.jpg" },
-            new Meal { Name = "Tavuk Sote", Description = "Lezzetli tavuk sote.", Price = 20.0m, Type = "Ana Yemek", ImageUrl = "/images/tavuksote.jpg" },
-            new Meal { Name = "Karnıyarık", Description = "Lezzetli karnıyarık.", Price = 25.0m, Type = "Ana Yemek", ImageUrl = "/images/karniyarik.jpg" },
-            new Meal { Name = "Cacık", Description = "Ferah cacık.", Price = 5.0m, Type = "Salata", ImageUrl = "/images/cacik.jpg" },
-            new Meal { Name = "Çoban Salatası", Description = "Lezzetli çoban salatası.", Price = 7.0m, Type = "Salata", ImageUrl = "/images/cobansalatasi.jpg" },
-            new Meal { Name = "Baklava", Description = "Tatlı baklava.", Price = 15.0m, Type = "Tatlı", ImageUrl = "/images/baklava.jpg" },
-            new Meal { Name = "Sütlaç", Description = "Tatlı sütlaç.", Price = 10.0m, Type = "Tatlı", ImageUrl = "/images/sutlac.jpg" },
-            new Meal { Name = "Ayran", Description = "Ferah ayran.", Price = 3.0m, Type = "İçecek", ImageUrl = "/images/ayran.jpg" },
-            new Meal { Name = "Kola", Description = "Serinletici kola.", Price = 5.0m, Type = "İçecek", ImageUrl = "/images/kola.jpg" }
+            new Meal { Name = "Mercimek Çorbası", Description = "Lezzetli ve sağlıklı mercimek çorbası.", Price = 10.0m, Type = "Çorba", ImageUrl = "mercimek.jpg" },
+            new Meal { Name = "Domates Çorbası", Description = "Taze domateslerden yapılmış çorba.", Price = 12.0m, Type = "Çorba", ImageUrl = "domates.jpg" },
+            new Meal { Name = "Ezogelin Çorbası", Description = "Türk mutfağının geleneksel çorbası.", Price = 11.0m, Type = "Çorba", ImageUrl = "ezogelin.jpg" },
+            new Meal { Name = "Tavuk Çorbası", Description = "Tavuklu ve sebzeli besleyici çorba.", Price = 14.0m, Type = "Çorba", ImageUrl = "tavuk.jpg" },
+            new Meal { Name = "Kremalı Mantar Çorbası", Description = "Kremalı ve mantarlı lezzetli çorba.", Price = 15.0m, Type = "Çorba", ImageUrl = "mantar.jpg" },
+            new Meal { Name = "Tarhana Çorbası", Description = "Anadolu'nun geleneksel tarhana çorbası.", Price = 9.0m, Type = "Çorba", ImageUrl = "tarhana.jpg" },
+            new Meal { Name = "Pilav", Description = "Lezzetli pilav.", Price = 10.0m, Type = "Ana Yemek", ImageUrl = "pilav.jpg" },
+            new Meal { Name = "Tavuk Sote", Description = "Lezzetli tavuk sote.", Price = 20.0m, Type = "Ana Yemek", ImageUrl = "tavuksote.jpg" },
+            new Meal { Name = "Karnıyarık", Description = "Lezzetli karnıyarık.", Price = 25.0m, Type = "Ana Yemek", ImageUrl = "karniyarik.jpg" },
+            new Meal { Name = "Cacık", Description = "Ferah cacık.", Price = 5.0m, Type = "Salata", ImageUrl = "cacik.jpg" },
+            new Meal { Name = "Çoban Salatası", Description = "Lezzetli çoban salatası.", Price = 7.0m, Type = "Salata", ImageUrl = "cobansalatasi.jpg" },
+            new Meal { Name = "Baklava", Description = "Tatlı baklava.", Price = 15.0m, Type = "Tatlı", ImageUrl = "baklava.jpg" },
+            new Meal { Name = "Sütlaç", Description = "Tatlı sütlaç.", Price = 10.0m, Type = "Tatlı", ImageUrl = "sutlac.jpg" },
+            new Meal { Name = "Ayran", Description = "Ferah ayran.", Price = 3.0m, Type = "İçecek", ImageUrl = "ayran.jpg" },
+            new Meal { Name = "Kola", Description = "Serinletici kola.", Price = 5.0m, Type = "İçecek", ImageUrl = "kola.jpg" }
         );
         context.SaveChanges();
     }

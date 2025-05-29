@@ -5,7 +5,8 @@ namespace IntimateHomeCookedFood.Models
 {
     public class Meal
     {
-        public int Id { get; set; }
+        [Key]
+        public string Id { get; set; } = string.Empty; // Artık string ID kullanılıyor
 
         [Required]
         public string Name { get; set; } = string.Empty;
@@ -20,12 +21,12 @@ namespace IntimateHomeCookedFood.Models
         public string Type { get; set; } = string.Empty;
 
         [Required]
-        public string Title { get; set; } = string.Empty; // Title ekleniyor
+        public string Title { get; set; } = string.Empty;
 
-        public DateTime DatePosted { get; set; } = DateTime.Now; // DatePosted ekleniyor
+        public DateTime DatePosted { get; set; } = DateTime.Now;
 
-        public string UserId { get; set; } = string.Empty; // UserId ekleniyor
+        public string UserId { get; set; } = string.Empty;
 
-        public string ImageUrl { get; set; } = string.Empty; // ImageUrl ekleniyor
+        public string ImageUrl { get; set; } = string.Empty;
     }
 }

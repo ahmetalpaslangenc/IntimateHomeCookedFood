@@ -1,0 +1,44 @@
+@model List<IntimateHomeCookedFood.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Sipariş Onayı";
+}
+
+<div class="container mt-5">
+    <div class="alert alert-success text-center p-4">
+        <h2 class="mb-3">Tebrikler!</h2>
+        <p class="lead">Siparişiniz başarıyla oluşturulmuştur. Ödemenizi kapıda yapabilirsiniz.</p>
+        <a class="btn btn-danger mt-3" asp-controller="Home" asp-action="Index">Anasayfaya Dön</a>
+
+        <br /><br />
+        <button class="btn btn-outline-primary" onclick="document.getElementById('order-details').classList.toggle('d-none')">
+            Sipariş Detayını Gör
+        </button>
+    </div>
+
+    <div id="order-details" class="d-none mt-4">
+        <h4>Sipariş Detayları</h4>
+        <table class="table table-bordered mt-2">
+            <thead>
+                <tr>
+                    <th>Yemek</th>
+                    <th>Adet</th>
+                    <th>Birim Fiyat</th>
+                    <th>Toplam</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Meal.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Meal.Price TL</td>
+                        <td>@(item.Meal.Price * item.Quantity) TL</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h5 class="text-right">Toplam: @Model.Sum(i => i.Meal.Price * i.Quantity) TL</h5>
+    </div>
+</div>

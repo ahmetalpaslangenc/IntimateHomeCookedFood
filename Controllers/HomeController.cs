@@ -36,6 +36,11 @@ namespace IntimateHomeCookedFood.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View(); // Views/Home/About.cshtml sayfasına yönlendirir
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

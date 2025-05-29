@@ -1,5 +1,6 @@
 @model IEnumerable<IntimateHomeCookedFood.Models.Meal>
-
+<div class="yemekler-container">
+    <div class="yemekler-arkaplan"></div>
 <h2>Ana Yemekler</h2>
 
 <div class="row">
@@ -7,13 +8,19 @@
     {
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-                <div class="card-body">
+                <div class="card-body text-center">
+                    <img src="@Url.Content(meal.ImageUrl)" 
+                         class="img-fluid rounded mb-2" 
+                         alt="@meal.Name" 
+                         style="height: 200px; width: 100%; object-fit: cover;" />
+
                     <h4 class="card-title">@meal.Name</h4>
                     <p class="card-text">@meal.Description</p>
                     <div class="d-flex justify-content-between align-items-center">
-                        <form method="post" asp-controller="Cart" asp-action="AddToCart">
+                        <form asp-action="AddToCart" method="post">
                             <input type="hidden" name="mealId" value="@meal.Id" />
-                            <button type="submit" class="btn btn-sm btn-primary">Sepete Ekle</button>
+                            <input type="hidden" name="returnUrl" value="@Url.Action("MainDishes", "Meals")" />
+                            <button type="submit" class="btn btn-sm btn-outline-primary">Sepete Ekle</button>
                         </form>
                         <small class="text-muted">@meal.Price TL</small>
                     </div>
@@ -22,4 +29,3 @@
         </div>
     }
 </div>
-

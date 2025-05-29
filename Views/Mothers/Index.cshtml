@@ -1,23 +1,25 @@
-@model IEnumerable<IntimateHomeCookedFood.Models.Mother>
+@model IEnumerable<IntimateHomeCookedFood.Models.MotherDetailViewModel>
 
 @{
     ViewData["Title"] = "Annelerimiz";
 }
+<div class="yemekler-container">
+    <div class="yemekler-arkaplan"></div>
+    <h2>Annelerimiz</h2>
 
-<h2>Annelerimiz</h2>
-
-<div class="row">
-    @foreach (var mother in Model)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <div class="card-body">
-                    <h4 class="card-title">@mother.Name</h4>
-                    <p class="card-text">Rating: @mother.Rating</p>
-                    <a href="@Url.Action("Details", "Mothers", new { id = mother.Id })" class="btn btn-sm btn-outline-secondary">Details</a>
+    <div class="row">
+        @foreach (var mother in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <h4 class="card-title">@mother.Name</h4>
+                        <p class="card-text">Rating: @mother.Rating</p>
+                        <a href="@Url.Action("Details", "Mothers", new { name = mother.Name })"
+                           class="btn btn-sm btn-outline-secondary">Detaylar</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
-

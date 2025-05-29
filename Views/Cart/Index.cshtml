@@ -1,38 +1,47 @@
 @model List<IntimateHomeCookedFood.Models.CartItem>
 
-@{
-    ViewData["Title"] = "Sepet";
-}
+<div class="diger-sayfa-arkaplan"></div>
 
-<h2>Sepet</h2>
+<div class="container py-5">
+    <h2 class="text-center mb-4">Sepet</h2>
 
-@if (Model.Any())
-{
     <table class="table">
         <thead>
             <tr>
-                <th>Yemek Adı</th>
-                <th>Anne Adı</th>
+                <th>Yemek</th>
                 <th>Fiyat</th>
-                <th>Adet</th> <!-- Adet sütunu eklendi -->
-                <th>Toplam Fiyat</th> <!-- Toplam Fiyat sütunu eklendi -->
+                <th>Adet</th>
+                <th>Toplam</th>
             </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Meal.Name</td>
-                <td>@item.Mother.Name</td>
-                <td>@item.Meal.Price TL</td>
-                <td>@item.Quantity</td> <!-- Adet bilgisi gösterildi -->
-                <td>@(item.Meal.Price * item.Quantity) TL</td> <!-- Toplam Fiyat hesaplandı -->
-            </tr>
-        }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Meal.Name</td>
+                    <td>@item.Meal.Price TL</td>
+                    <td>
+                        <form method="post" asp-action="UpdateQuantity" asp-controller="Cart" style="display:inline;">
+                            <input type="hidden" name="mealId" value="@item.Meal.Id" />
+                            <input type="hidden" name="action" value="decrease" />
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">-</button>
+                        </form>
+                        <span class="mx-2">@item.Quantity</span>
+                        <form method="post" asp-action="UpdateQuantity" asp-controller="Cart" style="display:inline;">
+                            <input type="hidden" name="mealId" value="@item.Meal.Id" />
+                            <input type="hidden" name="action" value="increase" />
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+                        </form>
+                    </td>
+                    <td>@(item.Meal.Price * item.Quantity) TL</td>
+                </tr>
+            }
         </tbody>
     </table>
-}
-else
-{
-    <p>Sepetiniz boş.</p>
-}
+
+    <h4 class="mt-3">Toplam: @Model.Sum(i => i.Meal.Price * i.Quantity) TL</h4>
+
+    <div class="text-right mt-4">
+        <a class="btn btn-success btn-lg" asp-controller="Cart" asp-action="OrderConfirmation">Sipariş Ver</a>
+    </div>
+</div>

@@ -22,81 +22,65 @@ namespace IntimateHomeCookedFood.Controllers
             return View();
         }
 
-        [Route("Meals/Corbalar")]
         public IActionResult Soups()
         {
-            var soups = _context.Meals.Where(m => m.Type == "Çorba").Take(6).ToList();
-            return View("Corbalar", soups);
+            var meals = _context.Meals.Where(m => m.Type == "Çorba").ToList();
+            return View("Corbalar", meals);
         }
 
-        [Route("Meals/AnaYemekler")]
         public IActionResult MainDishes()
         {
-            var mainDishes = _context.Meals.Where(m => m.Type == "Ana Yemek").Take(6).ToList();
-            return View("AnaYemekler", mainDishes);
+            var meals = _context.Meals.Where(m => m.Type == "Ana Yemek").ToList();
+            return View("AnaYemekler", meals);
         }
 
-        [Route("Meals/Salatalar")]
         public IActionResult Salads()
         {
-            var salads = _context.Meals.Where(m => m.Type == "Salata").Take(6).ToList();
-            return View("Salatalar", salads);
+            var meals = _context.Meals.Where(m => m.Type == "Salata").ToList();
+            return View("Salatalar", meals);
         }
 
-        [Route("Meals/Tatlilar")]
         public IActionResult Desserts()
         {
-            var desserts = _context.Meals.Where(m => m.Type == "Tatlı").Take(6).ToList();
-            return View("Tatlilar", desserts);
+            var meals = _context.Meals.Where(m => m.Type == "Tatlı").ToList();
+            return View("Tatlilar", meals);
         }
 
-        [Route("Meals/Icecekler")]
         public IActionResult Drinks()
         {
-            var drinks = _context.Meals.Where(m => m.Type == "İçecek").Take(6).ToList();
-            return View("Icecekler", drinks);
-        }
-
-        [Route("Meals/Details/{id}")]
-        public IActionResult Details(int id)
-        {
-            var meal = _context.Meals.FirstOrDefault(m => m.Id == id);
-            var mothers = MothersController.Mothers.Where(m => m.Meals.Any(meal => meal.Id == id)).ToList();
-
-            if (meal == null)
-            {
-                return NotFound();
-            }
-
-            var viewModel = new MealDetailsViewModel
-            {
-                Meal = meal,
-                Mothers = mothers
-            };
-
-            return View(viewModel);
+            var meals = _context.Meals.Where(m => m.Type == "İçecek").ToList();
+            return View("icecekler", meals);
         }
 
         [HttpPost]
-        public IActionResult AddToCart(int mealId)
+        public IActionResult AddToCart(string mealId, string returnUrl)
         {
             var meal = _context.Meals.FirstOrDefault(m => m.Id == mealId);
-            var mother = MothersController.Mothers.FirstOrDefault(m => m.Meals.Any(meal => meal.Id == mealId));
 
-            if (meal != null && mother != null)
+            if (meal != null)
             {
                 var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart") ?? new List<CartItem>();
-                var cartItem = new CartItem { Meal = meal, Mother = mother };
-                cart.Add(cartItem);
+
+                var existing = cart.FirstOrDefault(x => x.Meal.Id == mealId);
+                if (existing != null)
+                {
+                    existing.Quantity++;
+                }
+                else
+                {
+                    cart.Add(new CartItem
+                    {
+                        Meal = meal,
+                        Mother = null,
+                        Quantity = 1
+                    });
+                }
 
                 HttpContext.Session.SetObjectAsJson("cart", cart);
-
-                var cartCount = HttpContext.Session.GetInt32("cartCount") ?? 0;
-                HttpContext.Session.SetInt32("cartCount", cartCount + 1);
-
-                TempData["Message"] = "Ürün sepete eklendi.";
+                HttpContext.Session.SetInt32("cartCount", cart.Sum(x => x.Quantity));
             }
-            return RedirectToAction("Index", "Cart");
+
+            return Redirect(returnUrl ?? Url.Action("Index", "Meals"));
         }
     }
 }
